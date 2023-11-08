@@ -3,7 +3,7 @@ package nlp
 case class Text(source: String):
   lazy val words: Vector[String] = // dela upp source i ord
     val noNonLetters = source.map(c => if c.isLetter then c else ' ')
-    noNonLetters.split(' ').filter(_.nonEmpty).toVector
+    noNonLetters.split(' ').filter(_.nonEmpty).toVector.map(word => word.toLowerCase())
 
   lazy val distinct: Vector[String] = words.distinct
 
